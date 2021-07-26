@@ -96,6 +96,14 @@
 			name = donatems;
 			sourceTree = "<group>";
 		};
+		1CF9030FEC72423BB2E94CDD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +130,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D0F384CD962A8A510836E82B /* Pods */,
+				1CF9030FEC72423BB2E94CDD /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
