@@ -6,12 +6,10 @@ import { Text } from 'react-native-elements';
 const Layout = ({ children, title }) => {
   return (
     <SafeAreaView>
-      <ScrollView style={styles.wrapper}>
-        <Text h1 style={styles.title}>
-          {title}
-        </Text>
-        {children}
-      </ScrollView>
+      <Text h1 style={styles.title}>
+        {title}
+      </Text>
+      <ScrollView style={styles.wrapper}>{children}</ScrollView>
     </SafeAreaView>
   );
 };
