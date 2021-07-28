@@ -8,8 +8,8 @@ import { allDonations } from '../mocks/all-donations';
 const Home = () => {
   return (
     <Layout title="Home">
-      {allDonations.map(({ uri, category, description }) => (
-        <Post uri={uri} category={category} description={description} />
+      {allDonations.map(({ uri, category, description }, index) => (
+        <Post uri={uri} category={category} description={description} key={index} />
       ))}
     </Layout>
   );

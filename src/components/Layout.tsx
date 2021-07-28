@@ -2,6 +2,7 @@ import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 
 import React from 'react';
 import { Text } from 'react-native-elements';
+import Filter from '../components/Filter';
 
 const Layout = ({ children, title }) => {
   return (
@@ -9,6 +10,7 @@ const Layout = ({ children, title }) => {
       <Text h1 style={styles.title}>
         {title}
       </Text>
+      <Filter />
       <ScrollView style={styles.wrapper}>{children}</ScrollView>
     </SafeAreaView>
   );
