@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { Chip, Button } from "react-native-elements";
 import Icon from 'react-native-vector-icons/Feather';
+import { allFilters } from '../mocks/all-filters';
+import FiltersListModalComponent from "./FiltersListModalComponent";
 
 const Filter = () => {
   const [filters, setFilters] = useState([]);
@@ -16,22 +18,22 @@ const Filter = () => {
   return (
     <View style={styles.container}>
       <View style={styles.chipContainer}>
-        <View
-          style={styles.chip}
-        >
-          <Chip
-            title="tops"
-            type={filters.includes("tops") ? "solid" : "outline"}
-            onPress={() => addRemoveFilters("tops")}
-          >
-          </Chip>
-        </View>
-        <Chip
-          title="bottoms"
-          type={filters.includes("bottoms") ? "solid" : "outline"}
-          onPress={() => addRemoveFilters("bottoms")}
-        >
-        </Chip>
+        {allFilters.map((filter, index) => {
+          return (
+            <View
+              style={styles.chip}
+              key={index}
+            >
+              <Chip
+                title={filter}
+                type="solid"
+                onPress={() => addRemoveFilters(filter)}
+                icon={<Icon name="x" size={16} color="white" />}
+                iconRight
+              />
+            </View>
+          )
+        })}
       </View>
       <View style={styles.button}>
         <Button
@@ -39,7 +41,7 @@ const Filter = () => {
           icon={
             <Icon name="sliders" size={20} style={{ transform: [{ rotate: "90deg" }] }} />
           }
-          onPress={() => navigation.navigate('MyModal')}
+          onPress={() => navigation.navigate('MyModal', { name: 'filter page', text: 'filtersssss', component: <FiltersListModalComponent /> })}
         />
       </View>
     </View>

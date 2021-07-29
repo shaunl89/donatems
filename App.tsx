@@ -10,8 +10,14 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { View, Text, Button } from 'react-native';
+import ModalScreen from './src/components/ModalScreen';
+import { LogBox } from 'react-native';
+import { store } from './src/store/store';
+import { Provider } from 'react-redux'
 
+LogBox.ignoreLogs([
+  'Non-serializable values were found in the navigation state',
+]);
 const Tab = createBottomTabNavigator();
 const RootStack = createStackNavigator();
 
@@ -62,28 +68,31 @@ const BottomNavTabs = () => {
   )
 }
 
-const ModalScreen = ({ navigation }) => {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 30 }}>This is a modal!</Text>
-      <Button onPress={() => navigation.goBack()} title="Dismiss" />
-    </View>
-  );
-}
 
 const App = () => {
   return (
+
     <SafeAreaProvider>
-      <NavigationContainer>
-        <RootStack.Navigator mode="modal">
-          <RootStack.Screen
-            name="BottomNavTabs"
-            component={BottomNavTabs}
-            options={{ headerShown: false }}
-          />
-          <RootStack.Screen name="MyModal" component={ModalScreen} />
-        </RootStack.Navigator>
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <RootStack.Navigator mode="modal">
+            <RootStack.Screen
+              name="Main"
+              component={BottomNavTabs}
+              options={{ headerShown: false }}
+            />
+            <RootStack.Screen
+              name="MyModal"
+              component={ModalScreen}
+              options={({ route }: { route: any }) => ({
+                title: route.params.name,
+                headerBackTitleVisible: false,
+                component: route.params.component
+              })}
+            />
+          </RootStack.Navigator>
+        </NavigationContainer>
+      </Provider>
     </SafeAreaProvider>
   );
 };
