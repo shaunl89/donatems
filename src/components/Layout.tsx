@@ -19,7 +19,9 @@ const Layout = ({ children, title }) => {
 export default Layout;
 
 const styles = StyleSheet.create({
-  wrapper: {},
+  wrapper: {
+    marginBottom: 120
+  },
   title: {
     marginBottom: 20,
     paddingLeft: 20,

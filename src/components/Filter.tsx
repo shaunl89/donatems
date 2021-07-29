@@ -1,24 +1,31 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
-import { Chip, Button } from "react-native-elements";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { Button, Chip, Text } from "react-native-elements";
 import Icon from 'react-native-vector-icons/Feather';
-import { allFilters } from '../mocks/all-filters';
+import { useDispatch, useSelector } from "react-redux";
+import { selectFilters, update } from "./filterSlice";
 import FiltersListModalComponent from "./FiltersListModalComponent";
 
 const Filter = () => {
-  const [filters, setFilters] = useState([]);
   const navigation = useNavigation();
+  const filters = useSelector(selectFilters);
+  const dispatch = useDispatch();
 
-  const addRemoveFilters = (name) => {
-    filters.includes(name) ?
-      setFilters(filters.filter((element) => element !== name)) :
-      setFilters([...filters, name])
-  }
+  const removeFilters = (name) => {
+    dispatch(update(filters.filter((element) => element !== name)))
+  };
+
+  const filtersPlaceholder = () => {
+    return (
+      <Text style={styles.placeholder}>Filter by category</Text>
+    )
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.chipContainer}>
-        {allFilters.map((filter, index) => {
+        {!filters.length ? filtersPlaceholder() : filters.map((filter, index) => {
           return (
             <View
               style={styles.chip}
@@ -27,8 +34,10 @@ const Filter = () => {
               <Chip
                 title={filter}
                 type="solid"
-                onPress={() => addRemoveFilters(filter)}
-                icon={<Icon name="x" size={16} color="white" />}
+                onPress={() => removeFilters(filter)}
+                icon={
+                  <Icon name="x" size={16} color="white" />
+                }
                 iconRight
               />
             </View>
@@ -41,7 +50,12 @@ const Filter = () => {
           icon={
             <Icon name="sliders" size={20} style={{ transform: [{ rotate: "90deg" }] }} />
           }
-          onPress={() => navigation.navigate('MyModal', { name: 'filter page', text: 'filtersssss', component: <FiltersListModalComponent /> })}
+          onPress={
+            () => navigation.navigate('MyModal', {
+              name: 'Filter by',
+              component: <FiltersListModalComponent />
+            })
+          }
         />
       </View>
     </View>
@@ -59,6 +73,7 @@ const styles = StyleSheet.create({
   },
   chipContainer: {
     flexDirection: 'row',
+    alignItems: 'center'
   },
   chip: {
     marginRight: 10,
@@ -67,4 +82,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     alignSelf: 'flex-end',
   },
+  placeholder: {
+    fontSize: 16
+  }
 });

@@ -1,19 +1,18 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import { LogBox } from 'react-native';
 import 'react-native-gesture-handler';
-
-import Home from './src/pages/Home';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Feather';
+import { Provider } from 'react-redux';
+import ModalScreen from './src/components/ModalScreen';
+import Home from './src/pages/Home';
 import MyDonations from './src/pages/MyDonations';
 import MySelections from './src/pages/MySelections';
-import { NavigationContainer } from '@react-navigation/native';
 import Profile from './src/pages/Profile';
-import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
-import ModalScreen from './src/components/ModalScreen';
-import { LogBox } from 'react-native';
-import { store } from './src/store/store';
-import { Provider } from 'react-redux'
+import store from './src/store/store';
 
 LogBox.ignoreLogs([
   'Non-serializable values were found in the navigation state',
@@ -71,7 +70,6 @@ const BottomNavTabs = () => {
 
 const App = () => {
   return (
-
     <SafeAreaProvider>
       <Provider store={store}>
         <NavigationContainer>
