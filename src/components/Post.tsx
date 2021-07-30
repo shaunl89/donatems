@@ -8,6 +8,7 @@ const Post = ({ uri, category, description, user }) => {
     <View>
       <View style={styles.header}>
         <Image
+          resizeMode="contain"
           source={{ uri: user.profileImage }}
           style={styles.profileImg}
         />

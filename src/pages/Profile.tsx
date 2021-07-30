@@ -6,7 +6,7 @@ import { Text, Image, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Feather';
 
 const Profile = () => {
-  const [user, setUser] = useState(allUsers[0]);
+  const [user, setUser] = useState(allUsers[2]);
 
   return (
     <Layout title="Profile">
