@@ -11,7 +11,6 @@ const Home = () => {
     allDonations.filter((item) => appliedFilters.includes(item.category)) :
     allDonations;
 
-  console.log('filtere', filteredDonations[0].user)
   return (
     <Layout title="Home">
       {filteredDonations.map(({ uri, category, description, user }, index) => (
