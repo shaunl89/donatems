@@ -1,11 +1,20 @@
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { Text, Image, Badge } from 'react-native-elements';
 import Filter from '../components/Filter';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Layout = ({ children, title }) => {
+  const insets = useSafeAreaInsets();
+
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        backgroundColor: "white",
+        ...StyleSheet.absoluteFillObject,
+        paddingBottom: -insets.bottom
+      }}
+    >
       <View style={styles.title}>
         <Text h1>
           {title}
@@ -30,7 +39,6 @@ export default Layout;
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginBottom: 120
   },
   title: {
     flexDirection: 'row',
