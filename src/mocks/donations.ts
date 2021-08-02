@@ -1,4 +1,4 @@
-import { Category } from '../types';
+import { Category, Status } from '../types';
 import { Donation } from '../types';
 import { allUsers } from './all-users';
 
@@ -10,41 +10,40 @@ const IMG_BTM_1 = require("../images/Baby_Bottoms_1.jpg");
 const IMG_BTM_2 = require("../images/Baby_Bottoms_2.jpg");
 const IMG_FTW_1 = require("../images/Baby_Footwear_1.png");
 
+
+
 export const allDonations: Donation[] = [
   {
     uri: IMG_TOP_1,
     category: Category.TOPS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[1]
+    user: allUsers[1],
+    status: Status.CHOPED,
   },
   {
     uri: IMG_TOP_2,
     category: Category.TOPS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[0]
+    user: allUsers[0],
+    status: Status.AVAILABLE,
   },
   {
     uri: IMG_BTM_1,
     category: Category.BOTTOMS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[1]
-  },
-  {
-    uri: IMG_BTM_2,
-    category: Category.BOTTOMS,
-    description:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[0]
+    user: allUsers[1],
+    status: Status.WASTED,
   },
   {
     uri: IMG_FTW_1,
     category: Category.FOOTWEAR,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[0]
+    user: allUsers[0],
+    status: Status.AVAILABLE,
   },
 ];
 
@@ -54,7 +53,16 @@ export const mySelection: Donation[] = [
     category: Category.TOPS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[1]
+    user: allUsers[1],
+    status: Status.PENDING,
+  },
+  {
+    uri: IMG_BTM_2,
+    category: Category.BOTTOMS,
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
+    user: allUsers[0],
+    status: Status.CONTACT,
   },
 ]
 
@@ -64,6 +72,7 @@ export const myDonation: Donation[] = [
     category: Category.TOPS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[2]
+    user: allUsers[2],
+    status: Status.WANTED,
   },
 ]

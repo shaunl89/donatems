@@ -4,11 +4,20 @@ export enum Category {
   FOOTWEAR = 'Footwear',
 }
 
+export enum Status {
+  AVAILABLE,
+  CHOPED,
+  WASTED,
+  PENDING,
+  WANTED,
+  CONTACT,
+}
 export interface Donation {
   uri: string;
   category: Category;
   description: string;
   user: User;
+  status: Status;
 }
 
 export interface User {

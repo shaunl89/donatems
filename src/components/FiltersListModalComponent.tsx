@@ -3,8 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-native';
 import { CheckBox } from "react-native-elements";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectHomeFilters, updateHomeFilters } from '../components/filterSlice';
-import { allFilters } from '../mocks/all-filters';
+import { allFilters } from "../constants";
 
 const FiltersListModalComponent = ({reducer, selector}: {reducer, selector: (state: any) => any}) => {
   const navigation = useNavigation();

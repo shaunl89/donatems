@@ -16,11 +16,11 @@ const Home = () => {
 
   return (
     <Layout>
-      <Header title="Home" />
+      <Header title="Home" showChopes={true} />
       <Filter reducer={updateHomeFilters} selector={selectHomeFilters}/>
       <Content>
-        {filteredDonations.map(({ uri, category, description, user }, index) => (
-          <Post uri={uri} category={category} description={description} key={index} user={user} />
+        {filteredDonations.map(({ uri, category, description, user, status }, index) => (
+          <Post uri={uri} category={category} description={description} key={index} user={user} status={status}/>
         ))}
       </Content>
     </Layout>

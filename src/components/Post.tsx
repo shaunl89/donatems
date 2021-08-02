@@ -1,25 +1,32 @@
-import { ActivityIndicator, Dimensions, StyleSheet, Text, View } from 'react-native';
-
-import { Image } from 'react-native-elements';
+import { ActivityIndicator, Dimensions, StyleSheet, View } from 'react-native';
+import { Text, Image } from 'react-native-elements';
 import React from 'react';
+import { Status } from '../types';
+import { showStatusOverlay } from '../components/showStatusOverlay';
+import { showButtons } from '../components/showButtons';
 
-const Post = ({ uri, category, description, user }) => {
+const Post = ({ uri, category, description, user, showUser = true, status = Status.AVAILABLE }) => {
   return (
     <View>
-      <View style={styles.header}>
+      {showUser &&
+        <View style={styles.header}>
+          <Image
+            resizeMode="contain"
+            source={{ uri: user.profileImage }}
+            style={styles.profileImg}
+          />
+          <Text>{user.name}</Text>
+        </View>
+      }
+      <View style={styles.imageWrapper}>
         <Image
-          resizeMode="contain"
-          source={{ uri: user.profileImage }}
-          style={styles.profileImg}
+          source={ uri }
+          containerStyle={styles.img}
+          resizeMode={'contain'}
+          PlaceholderContent={<ActivityIndicator />}
         />
-        <Text>{user.name}</Text>
+        {showStatusOverlay(status)}
       </View>
-      <Image
-        source={ uri }
-        style={styles.img}
-        resizeMode={'contain'}
-        PlaceholderContent={<ActivityIndicator />}
-      />
       <Text style={styles.category}>
         Category:
         <Text style={styles.bold}>
@@ -27,6 +34,7 @@ const Post = ({ uri, category, description, user }) => {
         </Text>
       </Text>
       <Text style={styles.description}>{description}</Text>
+      {showButtons(status)}
     </View>
   );
 };
@@ -53,7 +61,6 @@ const styles = StyleSheet.create({
     height: win.width,
     flex: 1,
     alignSelf: 'stretch',
-    marginBottom: 20,
   },
   category: {
     paddingHorizontal: 20,
@@ -68,4 +75,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 20,
   },
+  imageWrapper: {
+    position: "relative",
+    width: win.width,
+    height: win.width,
+    marginBottom: 20,
+  },
+  placeOverlay: {
+    position: "absolute",
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  }
 });

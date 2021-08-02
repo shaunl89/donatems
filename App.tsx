@@ -8,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Feather';
 import { Provider } from 'react-redux';
 import ModalScreen from './src/components/ModalScreen';
+import MakeADonation from './src/pages/AddDonation';
 import Home from './src/pages/Home';
 import MyDonations from './src/pages/MyDonations';
 import MySelections from './src/pages/MySelections';
@@ -40,6 +41,16 @@ const BottomNavTabs = () => {
           tabBarLabel: 'My Selections',
           tabBarIcon: ({ color, size }) => (
             <Icon name="grid" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="MakeADonation"
+        component={MakeADonation}
+        options={{
+          tabBarLabel: 'Make a Donation',
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="plus" color={color} size={size} />
           ),
         }}
       />

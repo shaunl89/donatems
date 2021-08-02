@@ -20,8 +20,8 @@ const MySelections = () => {
       <Header title="My Selection" />
       <Filter reducer={updateSelectionFilters} selector={selectSelectionFilters}/>
       <Content>
-        {filteredDonations.map(({ uri, category, description, user }, index) => (
-          <Post uri={uri} category={category} description={description} key={index} user={user} />
+        {filteredDonations.map(({ uri, category, description, user, status }, index) => (
+          <Post uri={uri} category={category} description={description} key={index} user={user} status={status}/>
         ))}
       </Content>
     </Layout>

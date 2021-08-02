@@ -1,23 +1,27 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Text, Image, Badge } from 'react-native-elements';
-import Filter from "./Filter";
 
-const Header = ({ title }) => {
+const Header = ({ title, showChopes = false }) => {
     return (
       <View style={styles.title}>
         <Text h1>
           {title}
         </Text>
-        <Image
-          style={styles.img}
-          source={{ uri: 'https://static.chope.net.cn/chope/static/mainwebsite5.0/forrestaurant/img/loading.gif?date=20210706080511' }}
-        />
-        <Badge
-          status="error"
-          value={5}
-          containerStyle={styles.badgeContainer}
-        />
+        {showChopes &&
+          <>
+            <Image
+              style={styles.img}
+              source={{ uri: 'https://static.chope.net.cn/chope/static/mainwebsite5.0/forrestaurant/img/loading.gif?date=20210706080511' }}
+            />
+            <Badge
+              status="error"
+              value={5}
+              containerStyle={styles.badgeContainer}
+            />
+          </>
+        }
+
       </View>
     )
 }
