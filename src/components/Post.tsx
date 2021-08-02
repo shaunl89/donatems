@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Dimensions, StyleSheet, Text, View } from 'react-native';
 
 import { Image } from 'react-native-elements';
 import React from 'react';
@@ -15,8 +15,9 @@ const Post = ({ uri, category, description, user }) => {
         <Text>{user.name}</Text>
       </View>
       <Image
-        source={{ uri }}
+        source={ uri }
         style={styles.img}
+        resizeMode={'contain'}
         PlaceholderContent={<ActivityIndicator />}
       />
       <Text style={styles.category}>
@@ -32,6 +33,8 @@ const Post = ({ uri, category, description, user }) => {
 
 export default Post;
 
+const win = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
@@ -46,8 +49,10 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   img: {
-    width: '100%',
-    height: 300,
+    width: win.width,
+    height: win.width,
+    flex: 1,
+    alignSelf: 'stretch',
     marginBottom: 20,
   },
   category: {

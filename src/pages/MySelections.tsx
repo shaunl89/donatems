@@ -6,14 +6,14 @@ import { selectSelectionFilters, updateSelectionFilters } from '../components/fi
 import Header from '../components/Header';
 import Layout from '../components/Layout';
 import Post from '../components/Post';
-import { allDonations } from '../mocks/all-donations';
+import { mySelection } from '../mocks/donations';
 
 
 const MySelections = () => {
   const appliedFilters = useSelector(selectSelectionFilters);
   const filteredDonations = appliedFilters.length ?
-    allDonations.filter((item) => appliedFilters.includes(item.category)) :
-    allDonations;
+    mySelection.filter((item) => appliedFilters.includes(item.category)) :
+    mySelection;
 
   return (
     <Layout>

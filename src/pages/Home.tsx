@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import Post from '../components/Post';
 import React from 'react';
-import { allDonations } from '../mocks/all-donations';
+import { allDonations } from '../mocks/donations';
 import { useSelector } from 'react-redux';
 import { selectHomeFilters, updateHomeFilters } from '../components/filterSlice';
 import Header from '../components/Header';
