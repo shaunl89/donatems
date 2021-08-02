@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-native';
 import { CheckBox } from "react-native-elements";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilters, update } from '../components/filterSlice';
+import { selectHomeFilters, updateHomeFilters } from '../components/filterSlice';
 import { allFilters } from '../mocks/all-filters';
 
-const FiltersListModalComponent = () => {
+const FiltersListModalComponent = ({reducer, selector}: {reducer, selector: (state: any) => any}) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const existingFilters = useSelector(selectFilters);
+  const existingFilters = useSelector(selector);
 
   useEffect(() => {
     setSelectedFilters(existingFilters)
@@ -38,7 +38,7 @@ const FiltersListModalComponent = () => {
       <Button
         title="Confirm"
         onPress={() => {
-          dispatch(update(selectedFilters));
+          dispatch(reducer(selectedFilters));
           navigation.goBack();
         }}
       />

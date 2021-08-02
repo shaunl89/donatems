@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 import { allUsers } from '../mocks/all-users';
 import { Text, Image, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Feather';
+import Header from '../components/Header';
 
 const Profile = () => {
   const [user, setUser] = useState(allUsers[2]);
 
   return (
-    <Layout title="Profile">
+    <Layout>
+      <Header title="Profile" />
       <View style={styles.container}>
         <Image
           style={styles.img}

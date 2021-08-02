@@ -4,16 +4,15 @@ import { StyleSheet, View } from "react-native";
 import { Button, Chip, Text } from "react-native-elements";
 import Icon from 'react-native-vector-icons/Feather';
 import { useDispatch, useSelector } from "react-redux";
-import { selectFilters, update } from "./filterSlice";
 import FiltersListModalComponent from "./FiltersListModalComponent";
 
-const Filter = () => {
+const Filter = ({reducer, selector}: {reducer, selector: (state: any) => any}) => {
   const navigation = useNavigation();
-  const filters = useSelector(selectFilters);
+  const filters = useSelector(selector);
   const dispatch = useDispatch();
 
   const removeFilters = (name) => {
-    dispatch(update(filters.filter((element) => element !== name)))
+    dispatch(reducer(filters.filter((element) => element !== name)))
   };
 
   const filtersPlaceholder = () => {
@@ -53,7 +52,7 @@ const Filter = () => {
           onPress={
             () => navigation.navigate('MyModal', {
               name: 'Filter by',
-              component: <FiltersListModalComponent />
+              component: <FiltersListModalComponent reducer={reducer} selector={selector}/>
             })
           }
         />
