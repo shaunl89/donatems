@@ -27,14 +27,25 @@ const MakeADonation = () => {
             <Text h4 style={{ textAlign: 'center' }}>
               Add an Image
             </Text>
-            <TouchableOpacity style={styles.upload} onPress={()=>{
+            <TouchableOpacity
+              style={styles.upload}
+              onPress={() => {
                 setImageState(!imageState);
-            }}>
-              <Image
-                resizeMode="contain"
-                source={require('../images/Target.png')}
-                containerStyle={styles.imgContainer}
-              />
+              }}
+            >
+              {imageState ? (
+                <Image
+                  resizeMode="contain"
+                  source={require('../images/Template_Shirt.jpg')}
+                  containerStyle={styles.imgContainer}
+                />
+              ) : (
+                <Image
+                  resizeMode="contain"
+                  source={require('../images/Target.png')}
+                  containerStyle={styles.imgContainer}
+                />
+              )}
             </TouchableOpacity>
           </View>
         );
@@ -47,7 +58,7 @@ const MakeADonation = () => {
             <Picker
               selectedValue={selectedLanguage}
               onValueChange={(itemValue, itemIndex) => {
-                setSelectedLanguage(itemValue)
+                setSelectedLanguage(itemValue);
                 setCategoryState(true);
               }}
               style={styles.picker}
@@ -70,8 +81,8 @@ const MakeADonation = () => {
               numberOfLines={4}
               editable
               placeholder="This is my item"
-              onChangeText={(text)=>{
-                text ? setDescriptionState(true): setDescriptionState(false);
+              onChangeText={(text) => {
+                text ? setDescriptionState(true) : setDescriptionState(false);
               }}
             />
           </View>
@@ -144,7 +155,11 @@ const MakeADonation = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.buttonArea}>
-        <Button title={'Donate my shi(r)t'} onPress={() => {}} disabled={!descriptionState || !categoryState || !imageState}/>
+        <Button
+          title={'Donate my shi(r)t'}
+          onPress={() => {}}
+          disabled={!descriptionState || !categoryState || !imageState}
+        />
       </View>
     </Layout>
   );
