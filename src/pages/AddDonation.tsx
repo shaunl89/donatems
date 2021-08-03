@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Text, Image } from 'react-native-elements';
+import { Button, Text, Image, Overlay } from 'react-native-elements';
 import {
   Dimensions,
   TextInput,
@@ -18,6 +18,7 @@ const MakeADonation = () => {
   const [imageState, setImageState] = useState(false);
   const [categoryState, setCategoryState] = useState(false);
   const [descriptionState, setDescriptionState] = useState(false);
+  const [overlayVisible, setOverlayVisible] = useState(false);
 
   const displayOption = (option) => {
     switch (option) {
@@ -78,9 +79,10 @@ const MakeADonation = () => {
             <TextInput
               style={styles.inputBox}
               multiline
-              numberOfLines={4}
+              numberOfLines={10}
               editable
-              placeholder="This is my item"
+              placeholder="Describe what you are selling and include details such as size and condition that a receiver might be interested in."
+              placeholderTextColor="#888888"
               onChangeText={(text) => {
                 text ? setDescriptionState(true) : setDescriptionState(false);
               }}
@@ -111,6 +113,29 @@ const MakeADonation = () => {
       );
     }
   };
+
+  const toggleOverlay = () => {
+    setOverlayVisible(!overlayVisible);
+  };
+
+  const donatedOverlay = () => {
+    return (
+      <Overlay
+        isVisible={overlayVisible}
+        onBackdropPress={() => toggleOverlay()}
+      >
+        <View style={styles.overlay}>
+          <View style={styles.overlayText}>
+            <Text h4>Thank you!</Text>
+          </View>
+          <View style={styles.overlayText}>
+            <Text>Your item has been listed</Text>
+          </View>
+          <Button title="Dismiss" onPress={() => toggleOverlay()}></Button>
+        </View>
+      </Overlay>
+    )
+  }
 
   return (
     <Layout>
@@ -154,10 +179,11 @@ const MakeADonation = () => {
           </Text>
         </TouchableOpacity>
       </View>
+      {donatedOverlay()}
       <View style={styles.buttonArea}>
         <Button
-          title={'Donate my shi(r)t'}
-          onPress={() => {}}
+          title={'List it!'}
+          onPress={() => toggleOverlay()}
           disabled={!descriptionState || !categoryState || !imageState}
         />
       </View>
@@ -196,6 +222,8 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 10,
     borderColor: '#888888',
+    overflow: 'visible',
+    lineHeight: 20
   },
   options: {
     flexGrow: 0,
@@ -214,4 +242,15 @@ const styles = StyleSheet.create({
   buttonArea: {
     margin: 20,
   },
+  overlay: {
+    height: 150,
+    width: 300,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    margin: 20
+  },
+  overlayText: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  }
 });
