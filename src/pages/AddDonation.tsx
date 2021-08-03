@@ -5,7 +5,6 @@ import {
   TextInput,
   StyleSheet,
   View,
-  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import Header from '../components/Header';
@@ -16,6 +15,9 @@ import Icon from 'react-native-vector-icons/Feather';
 const MakeADonation = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('Tops');
   const [selectedOption, setSelectedOption] = useState('image');
+  const [imageState, setImageState] = useState(false);
+  const [categoryState, setCategoryState] = useState(false);
+  const [descriptionState, setDescriptionState] = useState(false);
 
   const displayOption = (option) => {
     switch (option) {
@@ -25,13 +27,15 @@ const MakeADonation = () => {
             <Text h4 style={{ textAlign: 'center' }}>
               Add an Image
             </Text>
-            <View style={styles.upload}>
+            <TouchableOpacity style={styles.upload} onPress={()=>{
+                setImageState(!imageState);
+            }}>
               <Image
                 resizeMode="contain"
                 source={require('../images/Target.png')}
                 containerStyle={styles.imgContainer}
               />
-            </View>
+            </TouchableOpacity>
           </View>
         );
       case 'category':
@@ -42,9 +46,10 @@ const MakeADonation = () => {
             </Text>
             <Picker
               selectedValue={selectedLanguage}
-              onValueChange={(itemValue, itemIndex) =>
+              onValueChange={(itemValue, itemIndex) => {
                 setSelectedLanguage(itemValue)
-              }
+                setCategoryState(true);
+              }}
               style={styles.picker}
             >
               <Picker.Item label="Tops" value="Tops" />
@@ -65,9 +70,34 @@ const MakeADonation = () => {
               numberOfLines={4}
               editable
               placeholder="This is my item"
+              onChangeText={(text)=>{
+                text ? setDescriptionState(true): setDescriptionState(false);
+              }}
             />
           </View>
         );
+    }
+  };
+
+  const displayCheck = (check) => {
+    if (check) {
+      return (
+        <Icon
+          name="check-circle"
+          size={14}
+          color={'#006115'}
+          style={{ marginBottom: 4 }}
+        />
+      );
+    } else {
+      return (
+        <Icon
+          name="x-circle"
+          size={14}
+          color={'#da0000'}
+          style={{ marginBottom: 4 }}
+        />
+      );
     }
   };
 
@@ -82,7 +112,7 @@ const MakeADonation = () => {
             setSelectedOption('image');
           }}
         >
-            <Icon name="x-circle" size={14} color={"#da0000"} style={{marginBottom: 4}}/>
+          {displayCheck(imageState)}
           <Icon name="image" size={30} />
           <Text h4 h4Style={{ fontSize: 16 }}>
             Image
@@ -94,7 +124,7 @@ const MakeADonation = () => {
             setSelectedOption('category');
           }}
         >
-            <Icon name="check-circle" size={14} color={"#006115"} style={{marginBottom: 4}}/>
+          {displayCheck(categoryState)}
           <Icon name="align-justify" size={30} />
           <Text h4 h4Style={{ fontSize: 16 }}>
             Category
@@ -106,7 +136,7 @@ const MakeADonation = () => {
             setSelectedOption('description');
           }}
         >
-            <Icon name="x-circle" size={14} color={"#da0000"} style={{marginBottom: 4}}/>
+          {displayCheck(descriptionState)}
           <Icon name="file-text" size={30} />
           <Text h4 h4Style={{ fontSize: 16 }}>
             Description
@@ -114,7 +144,7 @@ const MakeADonation = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.buttonArea}>
-        <Button title={'Donate my shi(r)t'} onPress={() => {}} />
+        <Button title={'Donate my shi(r)t'} onPress={() => {}} disabled={!descriptionState || !categoryState || !imageState}/>
       </View>
     </Layout>
   );
@@ -148,9 +178,9 @@ const styles = StyleSheet.create({
     height: 300,
     margin: 12,
     borderWidth: 1,
-    borderRadius:4,
+    borderRadius: 4,
     padding: 10,
-    borderColor: "#888888",
+    borderColor: '#888888',
   },
   options: {
     flexGrow: 0,
@@ -159,8 +189,7 @@ const styles = StyleSheet.create({
   },
   option: {
     flex: 1,
-    borderColor: "#d8d8d8",
-    // borderTopWidth: 1,
+    borderColor: '#d8d8d8',
     borderBottomWidth: 1,
     flexDirection: 'column',
     justifyContent: 'center',
