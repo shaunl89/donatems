@@ -4,25 +4,25 @@ import { Button } from 'react-native-elements';
 import { Status } from '../types';
 
 export const showButtons = (status) => {
-    switch(status) {
-        case(Status.PENDING):
+    switch (status) {
+        case (Status.PENDING):
             return (
                 <View style={styles.buttonGroup}>
                     <View style={styles.buttonSpace}>
                         <Button
                             title="I DONT WANT"
-                            buttonStyle={{backgroundColor: "red", width: "100%"}}
+                            buttonStyle={{ backgroundColor: "red", width: "100%" }}
                         />
                     </View>
                 </View>
             )
-        case(Status.WANTED):
+        case (Status.WANTED):
             return (
                 <View style={styles.buttonGroup}>
                     <View style={styles.buttonSpace}>
                         <Button
                             title="STILL WANT"
-                            buttonStyle={{backgroundColor: "red", marginRight: 10}}
+                            buttonStyle={{ backgroundColor: "red", marginRight: 10 }}
                         />
                     </View>
                     <View style={styles.buttonSpace}>
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
     buttonSpace: {
         flex: 1,
     }
-  });
+});

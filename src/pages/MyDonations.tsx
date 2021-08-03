@@ -17,11 +17,19 @@ const MyDonations = () => {
 
   return (
     <Layout>
-      <Header title="My Donations"/>
-      <Filter reducer={updateDonationFilters} selector={selectDonationFilters}/>
+      <Header title="My Donations" />
+      <Filter reducer={updateDonationFilters} selector={selectDonationFilters} />
       <Content>
-        {filteredDonations.map(({ uri, category, description, user, status }, index) => (
-          <Post uri={uri} category={category} description={description} key={index} user={user} showUser={false} status={status} />
+        {filteredDonations.map(({ uri, category, description, receiver, status }, index) => (
+          <Post
+            uri={uri}
+            category={category}
+            description={description}
+            key={index}
+            receiver={receiver}
+            showUser={false}
+            status={status}
+          />
         ))}
       </Content>
     </Layout>

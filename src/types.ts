@@ -16,7 +16,8 @@ export interface Donation {
   uri: string;
   category: Category;
   description: string;
-  user: User;
+  giver: User;
+  receiver?: User;
   status: Status;
 }
 

@@ -18,7 +18,8 @@ export const allDonations: Donation[] = [
     category: Category.TOPS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[1],
+    giver: allUsers[1],
+    receiver: null,
     status: Status.CHOPED,
   },
   {
@@ -26,7 +27,8 @@ export const allDonations: Donation[] = [
     category: Category.TOPS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[0],
+    giver: allUsers[0],
+    receiver: null,
     status: Status.AVAILABLE,
   },
   {
@@ -34,7 +36,8 @@ export const allDonations: Donation[] = [
     category: Category.BOTTOMS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[1],
+    giver: allUsers[1],
+    receiver: allUsers[0],
     status: Status.WASTED,
   },
   {
@@ -42,7 +45,8 @@ export const allDonations: Donation[] = [
     category: Category.FOOTWEAR,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[0],
+    giver: allUsers[0],
+    receiver: allUsers[1],
     status: Status.AVAILABLE,
   },
 ];
@@ -53,7 +57,8 @@ export const mySelection: Donation[] = [
     category: Category.TOPS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[1],
+    giver: allUsers[1],
+    receiver: allUsers[2],
     status: Status.PENDING,
   },
   {
@@ -61,7 +66,8 @@ export const mySelection: Donation[] = [
     category: Category.BOTTOMS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[0],
+    giver: allUsers[0],
+    receiver: allUsers[1],
     status: Status.CONTACT,
   },
 ]
@@ -72,7 +78,8 @@ export const myDonation: Donation[] = [
     category: Category.TOPS,
     description:
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
-    user: allUsers[2],
+    giver: allUsers[2],
+    receiver: allUsers[0],
     status: Status.WANTED,
   },
 ]

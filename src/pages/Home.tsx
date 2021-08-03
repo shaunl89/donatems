@@ -17,10 +17,17 @@ const Home = () => {
   return (
     <Layout>
       <Header title="Home" showChopes={true} />
-      <Filter reducer={updateHomeFilters} selector={selectHomeFilters}/>
+      <Filter reducer={updateHomeFilters} selector={selectHomeFilters} />
       <Content>
-        {filteredDonations.map(({ uri, category, description, user, status }, index) => (
-          <Post uri={uri} category={category} description={description} key={index} user={user} status={status}/>
+        {filteredDonations.map(({ uri, category, description, giver, status }, index) => (
+          <Post
+            uri={uri}
+            category={category}
+            description={description}
+            key={index}
+            giver={giver}
+            status={status}
+          />
         ))}
       </Content>
     </Layout>

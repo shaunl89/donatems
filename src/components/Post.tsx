@@ -4,28 +4,31 @@ import React from 'react';
 import { Status } from '../types';
 import { showStatusOverlay } from '../components/showStatusOverlay';
 import { showButtons } from '../components/showButtons';
+import ContactDetails from './ContactDetails';
 
-const Post = ({ uri, category, description, user, showUser = true, status = Status.AVAILABLE }) => {
+const Post = ({ uri, category, description, giver = null, receiver = null, showUser = true, status = Status.AVAILABLE }) => {
   return (
     <View>
       {showUser &&
         <View style={styles.header}>
           <Image
             resizeMode="contain"
-            source={{ uri: user.profileImage }}
+            source={{ uri: giver.profileImage }}
             style={styles.profileImg}
           />
-          <Text>{user.name}</Text>
+          <Text>{giver.name}</Text>
         </View>
       }
       <View style={styles.imageWrapper}>
         <Image
-          source={ uri }
+          source={uri}
           containerStyle={styles.img}
           resizeMode={'contain'}
           PlaceholderContent={<ActivityIndicator />}
         />
-        {showStatusOverlay(status)}
+        {status === Status.CONTACT && (receiver && ContactDetails(receiver) || giver && ContactDetails(giver))}
+
+        {/* {showStatusOverlay(status)} */}
       </View>
       <Text style={styles.category}>
         Category:
