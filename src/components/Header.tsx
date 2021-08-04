@@ -1,8 +1,14 @@
 import React from "react";
+import { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { Text, Image, Badge } from 'react-native-elements';
+import { useSelector } from "react-redux";
+import { selectChopeCount } from "./chopeSlice";
+
+const CHOPE_IMG = require("../images/Chope.png");
 
 const Header = ({ title, showChopes = false }) => {
+  const chopeCount = useSelector(selectChopeCount);
     return (
       <View style={styles.title}>
         <Text h1>
@@ -12,11 +18,11 @@ const Header = ({ title, showChopes = false }) => {
           <>
             <Image
               style={styles.img}
-              source={{ uri: 'https://static.chope.net.cn/chope/static/mainwebsite5.0/forrestaurant/img/loading.gif?date=20210706080511' }}
+              source={CHOPE_IMG}
             />
             <Badge
               status="error"
-              value={5}
+              value={chopeCount}
               containerStyle={styles.badgeContainer}
             />
           </>

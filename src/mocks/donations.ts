@@ -49,6 +49,24 @@ export const allDonations: Donation[] = [
     receiver: allUsers[1],
     status: Status.AVAILABLE,
   },
+  {
+    uri: IMG_FTW_1,
+    category: Category.FOOTWEAR,
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
+    giver: allUsers[0],
+    receiver: allUsers[1],
+    status: Status.AVAILABLE,
+  },
+  {
+    uri: IMG_FTW_1,
+    category: Category.FOOTWEAR,
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
+    giver: allUsers[0],
+    receiver: allUsers[1],
+    status: Status.AVAILABLE,
+  },
 ];
 
 export const mySelection: Donation[] = [

@@ -1,12 +1,25 @@
 import { ActivityIndicator, Dimensions, StyleSheet, View } from 'react-native';
 import { Text, Image } from 'react-native-elements';
-import React from 'react';
+import React, { useState } from 'react';
 import { Status } from '../types';
 import { showStatusOverlay } from '../components/showStatusOverlay';
 import { showButtons } from '../components/showButtons';
 import ContactDetails from './ContactDetails';
+import { showChope } from './showChope';
+import { selectChopeCount, updateChopeCount } from './chopeSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { Alert } from 'react-native';
 
 const Post = ({ uri, category, description, giver = null, receiver = null, showUser = true, status = Status.AVAILABLE }) => {
+  const [chope, setChope] = useState(false);
+  const dispatch = useDispatch();
+  const chopeCount = useSelector(selectChopeCount);
+
+  const unchope = () => {
+    dispatch(updateChopeCount(chopeCount+1));
+    setChope(false);
+  }
+
   return (
     <View>
       {showUser &&
@@ -25,9 +38,18 @@ const Post = ({ uri, category, description, giver = null, receiver = null, showU
           containerStyle={styles.img}
           resizeMode={'contain'}
           PlaceholderContent={<ActivityIndicator />}
+          onPress={()=> {
+            if(chopeCount > 0){
+              dispatch(updateChopeCount(chopeCount-1));
+              setChope(true);
+            } else {
+              Alert.alert("Out of Chopes!!!");
+            }
+          }}
         />
         {status === Status.CONTACT && (receiver && ContactDetails(receiver) || giver && ContactDetails(giver))}
 
+        {chope && showChope(unchope)}
         {/* {showStatusOverlay(status)} */}
       </View>
       <Text style={styles.category}>
