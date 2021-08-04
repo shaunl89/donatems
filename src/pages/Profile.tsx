@@ -11,7 +11,7 @@ const Profile = () => {
 
   return (
     <Layout>
-      <Header title="Profile" />
+      <Header title="Profile" showChopes={true} />
       <View style={styles.container}>
         <Image
           style={styles.img}
