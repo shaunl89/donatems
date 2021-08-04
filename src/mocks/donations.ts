@@ -20,7 +20,7 @@ export const allDonations: Donation[] = [
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
     giver: allUsers[1],
     receiver: null,
-    status: Status.CHOPED,
+    status: Status.AVAILABLE,
   },
   {
     uri: IMG_TOP_2,
@@ -38,7 +38,7 @@ export const allDonations: Donation[] = [
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
     giver: allUsers[1],
     receiver: allUsers[0],
-    status: Status.WASTED,
+    status: Status.AVAILABLE,
   },
   {
     uri: IMG_FTW_1,
@@ -77,7 +77,7 @@ export const mySelection: Donation[] = [
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
     giver: allUsers[1],
     receiver: allUsers[2],
-    status: Status.PENDING,
+    status: Status.CHOPED,
   },
   {
     uri: IMG_BTM_2,
@@ -98,6 +98,15 @@ export const myDonation: Donation[] = [
       'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
     giver: allUsers[2],
     receiver: allUsers[0],
-    status: Status.WANTED,
+    status: Status.CHOPED,
+  },
+  {
+    uri: IMG_BTM_2,
+    category: Category.TOPS,
+    description:
+      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, quam, recusandae quidem sed consectetur nulla voluptate repudiandae quod aperiam veritatis voluptatibus maiores nostrum id nam est. Quibusdam provident animi numquam.',
+    giver: allUsers[2],
+    receiver: allUsers[1],
+    status: Status.CONTACT,
   },
 ]

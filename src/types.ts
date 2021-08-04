@@ -6,12 +6,11 @@ export enum Category {
 
 export enum Status {
   AVAILABLE,
-  CHOPED,
-  WASTED,
-  PENDING,
-  WANTED,
-  CONTACT,
+  CHOPED, // receiver chopes item --> giver sees Confirm / Cancel in My Donations, receiver sees Decline item in My Selection
+  CONTACT, // allow users to arrange after acknowledging
+  COMPLETE, // after item is donated
 }
+
 export interface Donation {
   uri: string;
   category: Category;

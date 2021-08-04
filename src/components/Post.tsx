@@ -58,11 +58,9 @@ const Post = ({ uri, category, description, giver = null, receiver = null, showU
             />
           </TouchableWithoutFeedback>
         }
-        {status === Status.CONTACT && (receiver && ContactDetails(receiver) || giver && ContactDetails(giver))}
+        {/* {status === Status.CONTACT && (receiver && ContactDetails(receiver) || giver && ContactDetails(giver))} */}
 
         {chope && showChope(unchope)}
-        {/* {showStatusOverlay(status)} */}
-
       </View>
       <Text style={styles.category}>
         Category:
@@ -71,9 +69,7 @@ const Post = ({ uri, category, description, giver = null, receiver = null, showU
         </Text>
       </Text>
       <Text style={styles.description}>{description}</Text>
-      {/* {StatusInfoButtons(status, giver, receiver)} */}
-
-      {showButtons(status)}
+      {StatusInfoButtons(status, giver, receiver)}
     </View>
   );
 };
