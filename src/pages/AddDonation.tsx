@@ -118,11 +118,20 @@ const MakeADonation = () => {
     setOverlayVisible(!overlayVisible);
   };
 
+  const resetOptions = () => {
+    setCategoryState(false)
+    setImageState(false)
+    setDescriptionState(false)
+    setSelectedLanguage('Tops')
+    toggleOverlay()
+  }
+
   const donatedOverlay = () => {
     return (
       <Overlay
         isVisible={overlayVisible}
-        onBackdropPress={() => toggleOverlay()}
+        onBackdropPress={resetOptions}
+        overlayStyle={{ borderRadius: 10 }}
       >
         <View style={styles.overlay}>
           <View style={styles.overlayText}>
@@ -131,7 +140,7 @@ const MakeADonation = () => {
           <View style={styles.overlayText}>
             <Text>Your item has been listed</Text>
           </View>
-          <Button title="Dismiss" onPress={() => toggleOverlay()}></Button>
+          <Button title="Dismiss" onPress={resetOptions}></Button>
         </View>
       </Overlay>
     )
