@@ -3,5 +3,5 @@ export const colors = {
   secondary: '#e83151',
   accent: '#f19a3e',
   light: '#ffffff',
-  dark: '06070e'
+  dark: '#06070e'
 }
