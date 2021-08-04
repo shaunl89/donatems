@@ -2,7 +2,7 @@ import React from "react"
 import { View, Text, StyleSheet } from "react-native"
 import { User } from "../types"
 import Icon from 'react-native-vector-icons/Feather';
-import { colors } from '../styles';
+import { colors } from '../theme';
 
 const ContactDetails = (user: User) => {
   return (
