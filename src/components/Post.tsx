@@ -1,4 +1,4 @@
-import { ActivityIndicator, Dimensions, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Dimensions, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { Text, Image } from 'react-native-elements';
 import React, { useState } from 'react';
 import { Status } from '../types';
@@ -9,14 +9,17 @@ import { showChope } from './showChope';
 import { selectChopeCount, updateChopeCount } from './chopeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Alert } from 'react-native';
+import StatusInfoButtons from './StatusInfoButtons';
+import { useRoute } from '@react-navigation/native';
 
 const Post = ({ uri, category, description, giver = null, receiver = null, showUser = true, status = Status.AVAILABLE }) => {
   const [chope, setChope] = useState(false);
   const dispatch = useDispatch();
   const chopeCount = useSelector(selectChopeCount);
+  const route = useRoute();
 
   const unchope = () => {
-    dispatch(updateChopeCount(chopeCount+1));
+    dispatch(updateChopeCount(chopeCount + 1));
     setChope(false);
   }
 
@@ -33,24 +36,33 @@ const Post = ({ uri, category, description, giver = null, receiver = null, showU
         </View>
       }
       <View style={styles.imageWrapper}>
-        <Image
-          source={uri}
-          containerStyle={styles.img}
-          resizeMode={'contain'}
-          PlaceholderContent={<ActivityIndicator />}
-          onPress={()=> {
-            if(chopeCount > 0){
-              dispatch(updateChopeCount(chopeCount-1));
-              setChope(true);
-            } else {
-              Alert.alert("Out of Chopes!!!");
-            }
-          }}
-        />
+        {
+          <TouchableWithoutFeedback
+            style={{ height: '100%' }}
+            onPress={() => {
+              if (route.name === 'Home') {
+                if (chopeCount > 0) {
+                  dispatch(updateChopeCount(chopeCount - 1));
+                  setChope(true);
+                } else {
+                  Alert.alert("Out of Chopes!!!");
+                }
+              }
+            }}
+          >
+            <Image
+              source={uri}
+              containerStyle={styles.img}
+              resizeMode={'contain'}
+              PlaceholderContent={<ActivityIndicator />}
+            />
+          </TouchableWithoutFeedback>
+        }
         {status === Status.CONTACT && (receiver && ContactDetails(receiver) || giver && ContactDetails(giver))}
 
         {chope && showChope(unchope)}
         {/* {showStatusOverlay(status)} */}
+
       </View>
       <Text style={styles.category}>
         Category:
@@ -59,6 +71,8 @@ const Post = ({ uri, category, description, giver = null, receiver = null, showU
         </Text>
       </Text>
       <Text style={styles.description}>{description}</Text>
+      {/* {StatusInfoButtons(status, giver, receiver)} */}
+
       {showButtons(status)}
     </View>
   );
