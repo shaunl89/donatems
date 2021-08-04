@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Alert } from 'react-native';
 import StatusInfoButtons from './StatusInfoButtons';
 import { useRoute } from '@react-navigation/native';
+import showValidityOverlay from './showValidityOverlay';
 
 const Post = ({ uri, category, description, giver = null, receiver = null, showUser = true, status = Status.AVAILABLE }) => {
   const [chope, setChope] = useState(false);
@@ -59,6 +60,7 @@ const Post = ({ uri, category, description, giver = null, receiver = null, showU
           </TouchableWithoutFeedback>
         }
         {/* {status === Status.CONTACT && (receiver && ContactDetails(receiver) || giver && ContactDetails(giver))} */}
+        {status === Status.CONTACT && showValidityOverlay()}
 
         {chope && showChope(unchope)}
       </View>
