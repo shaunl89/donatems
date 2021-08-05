@@ -11,6 +11,7 @@ import Header from '../components/Header';
 import Layout from '../components/Layout';
 import { Picker } from '@react-native-picker/picker';
 import Icon from 'react-native-vector-icons/Feather';
+import { colors } from '../theme';
 
 const MakeADonation = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('Tops');
@@ -140,7 +141,13 @@ const MakeADonation = () => {
           <View style={styles.overlayText}>
             <Text>Your item has been listed</Text>
           </View>
-          <Button title="Dismiss" onPress={resetOptions}></Button>
+          <Button
+            title="Dismiss"
+            onPress={resetOptions}
+            titleStyle={{ fontWeight: 'bold' }}
+            buttonStyle={{ backgroundColor: colors.primary }}
+          >
+          </Button>
         </View>
       </Overlay>
     )
@@ -193,6 +200,8 @@ const MakeADonation = () => {
         <Button
           title={'List it!'}
           onPress={() => toggleOverlay()}
+          titleStyle={{ fontWeight: 'bold' }}
+          buttonStyle={{ backgroundColor: colors.primary, borderRadius: 20 }}
           disabled={!descriptionState || !categoryState || !imageState}
         />
       </View>
