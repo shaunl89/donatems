@@ -29,14 +29,12 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(206, 214, 251, 0.3)',
   },
   imgWrapper: {
     transform: [{ rotate: '40deg' }],
   },
   chopeImg: {
-    width: win.width / 1.6,
-    height: win.width / 1.6,
-    opacity: 0.6,
+    width: win.width / 2.5,
+    height: win.width / 2.5,
   },
 });
